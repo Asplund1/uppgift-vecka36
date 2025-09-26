@@ -14,3 +14,9 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t asplund1/min-tjanst:latest ./frontend
+      
+      - name: Run tests
+        run: |
+          cd frontend
+          npm install
+          npm test
