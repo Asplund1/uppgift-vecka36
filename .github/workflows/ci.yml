@@ -12,11 +12,24 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
 
-      - name: Build Docker image
-        run: docker build -t asplund1/min-tjanst:latest ./frontend
-      
-      - name: Run tests
+      # Frontend
+      - name: Build frontend image
+        run: docker build -t asplund1/frontend:latest ./frontend
+
+      - name: Run frontend tests
         run: |
           cd frontend
           npm install
           npm test
+        working-directory: ./frontend
+
+      # API
+      - name: Build API image
+        run: docker build -t asplund1/api:latest ./api
+
+      - name: Run API tests
+        run: |
+          cd api
+          npm install
+          npm test
+        working-directory: ./api
