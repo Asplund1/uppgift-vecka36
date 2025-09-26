@@ -1,3 +1,3 @@
-test('api dummy test', () => {
+test('dummy test api', () => {
   expect(2 * 2).toBe(4);
 });
