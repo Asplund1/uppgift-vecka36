@@ -1,5 +1,5 @@
-FROM nginx:alpine
-
-COPY dist /usr/share/nginx/html
-
-EXPOSE 80
+FROM node:20
+WORKDIR /app
+COPY . .
+RUN npm install
+CMD ["node", "index.js"]
