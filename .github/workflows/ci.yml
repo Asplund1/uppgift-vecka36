@@ -6,28 +6,20 @@ on:
       - dev
 
 jobs:
-  build:
+  frontend:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code
-        uses: actions/checkout@v4
-
-      # Frontend
-      - name: Build frontend image
-        run: docker build -t asplund1/frontend:latest ./frontend
-
-      - name: Run frontend tests
-        run: |
+      - uses: actions/checkout@v4
+      - run: docker build -t asplund1/frontend:latest ./frontend
+      - run: |
           npm install
           npm test
-        working-directory: ./frontend
 
-      # API
-      - name: Build API image
-        run: docker build -t asplund1/api:latest ./api
-
-      - name: Run API tests
-        run: |
+  api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t asplund1/api:latest ./api
+      - run: |
           npm install
           npm test
-        working-directory: ./api
