@@ -43,3 +43,6 @@ Thumbs.db
 # --------------------
 coverage/
 *.log
+
+
+# Ignorera specifika filer --- IGNORE ---
