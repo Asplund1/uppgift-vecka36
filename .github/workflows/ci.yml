@@ -18,7 +18,6 @@ jobs:
 
       - name: Run frontend tests
         run: |
-          cd frontend
           npm install
           npm test
         working-directory: ./frontend
@@ -29,7 +28,6 @@ jobs:
 
       - name: Run API tests
         run: |
-          cd api
           npm install
           npm test
         working-directory: ./api
