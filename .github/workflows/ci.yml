@@ -12,6 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: docker build -t asplund1/frontend:latest ./frontend
       - run: |
+          cd frontend
           npm install
           npm test
 
@@ -21,5 +22,6 @@ jobs:
       - uses: actions/checkout@v4
       - run: docker build -t asplund1/api:latest ./api
       - run: |
+          cd api
           npm install
           npm test
