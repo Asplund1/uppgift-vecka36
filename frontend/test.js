@@ -1,3 +1,3 @@
-test('dummy test frontend', () => {
-  expect(1 + 1).toBe(2);
+test('fail test', () => {
+  expect(1 + 1).toBe(3);
 });
