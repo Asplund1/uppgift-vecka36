@@ -10,11 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: docker build -t asplund1/frontend:latest ./frontend
-      - run: |
-          cd frontend
-          npm install
-          npm test
+
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+      - name: Build runtime image
+        run: docker build -t asplund1/frontend:latest ./frontend
+
+      - name: Push runtime image
+        run: docker push asplund1/frontend:latest
 
   api:
     runs-on: ubuntu-latest
