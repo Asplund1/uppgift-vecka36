@@ -14,8 +14,12 @@ jobs:
       - name: Log in to Docker Hub
         run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
+      - name: Build builder stage (runs tests)
+        run: docker build --target builder -t dockerasplund/frontend-builder ./frontend
+
+        
       - name: Build runtime image
-        run: docker build -t dockerasplund/frontend:latest ./frontend
+        run: docker build --target runtime -t dockerasplund/frontend:latest ./frontend
 
       - name: Push runtime image
         run: docker push dockerasplund/frontend:latest
